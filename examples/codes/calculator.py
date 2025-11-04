@@ -27,7 +27,7 @@ async def main():
 
     # 配置 Agent 选项
     options = ClaudeAgentOptions(
-        allowed_tools=["Bash", "Read", "Write", "Glob", "Task", "TodoWrite", "ListMcpResources", "ReadMcpResource", "mcp__aipexbase-mcp-server__execute_sql", "mcp__aipexbase-mcp-server__list_dynamic_api", "mcp__aipexbase-mcp-server__list_tables"],
+        allowed_tools=["Bash", "KillBash", "BashOutput", "WebSearch", "WebFetch", "Read", "Write", "Edit", "Glob", "Grep", "Task", "TodoWrite", "ListMcpResources", "ReadMcpResource", "mcp__aipexbase-mcp-server"],
         system_prompt={
             "type": "preset",
             "preset": "claude_code",
@@ -89,8 +89,6 @@ min_size:1
 }
 - boolean:布尔值,例如开关,选择等场景
 ```dslType说明```
-
-
 
 一个轻量的前端 aipexbase SDK，提供身份认证、数据表 CRUD、以及自定义 API 调用能力。
 支持链式调用，Promise 风格；自动管理令牌并在请求头中携带。
@@ -253,7 +251,7 @@ const data = await client.api
         },
         cwd="/home/user",
         permission_mode="bypassPermissions",  # Sandbox 中跳过权限确认
-        #setting_sources=["project", "local", "user"],
+        setting_sources=["project", "local", "user"],
         #mcp_servers=".mcp.json"
     )
 
@@ -261,8 +259,7 @@ const data = await client.api
     async with ClaudeSDKClient(options) as client:
         # 发送任务查询
         await client.query("""
-创建一个带 Web 前端的精美的计算器应用:
-
+            创建一个带 Web 前端的精美的计算器应用:
 要求:
 - 界面美观、现代化
 - 代码简洁、注释清晰
@@ -270,7 +267,6 @@ const data = await client.api
 - 完成后立即启动服务并保持运行
 - 使用中文回复所有消息
 - 服务部署至3000端口
-- 重要！！！部署完毕后运行测模拟计算，"mcp__aipexbase-mcp-server__execute_sql", "mcp__aipexbase-mcp-server__list_dynamic_api", "mcp__aipexbase-mcp-server__list_tables" 使用这些mcp工具查看已存在的表和表中是否存在历史计算数据。！！！
         """)
 
         # 接收并处理响应

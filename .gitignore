@@ -4,3 +4,9 @@ __pycache__/
 *.pyc
 .venv
 .claude
+.settings/
+.serena
+.mcp.json
+# Examples directory cache
+examples/apps/__pycache__/
+examples/codes/__pycache__/

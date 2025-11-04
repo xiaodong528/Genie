@@ -15,7 +15,7 @@ e2b_project/
 │   ├── build_template.py        # Template 构建脚本
 │   ├── sandbox_manager.py       # Sandbox 生命周期管理
 │   ├── agent_runner.py          # Agent 运行器（核心）
-│   ├── code/                    # AI Agent 脚本（在 Sandbox 内执行）
+│   ├── codes/                    # AI Agent 脚本（在 Sandbox 内执行）
 │   │   ├── calculator.py        # 计算器应用生成器
 │   │   └── memo.py              # 备忘录应用生成器
 │   └── apps/                    # 应用运行器（在宿主机执行）
@@ -46,7 +46,7 @@ graph TB
 
     subgraph "3. E2B Sandbox 实例"
         H --> I[Sandbox Instance]
-        I --> J[code/calculator.py<br/>AI Agent 脚本]
+        I --> J[codes/calculator.py<br/>AI Agent 脚本]
         J --> K[Claude Agent SDK]
         K --> L[Claude API]
         K --> M[工具调用<br/>Bash/Read/Write]
@@ -296,7 +296,7 @@ append_prompt = """
 **使用方式**:
 
 ```python
-# src/code/calculator.py
+# examples/codes/calculator.py
 from prompt import append_prompt
 
 options = ClaudeAgentOptions(
@@ -327,13 +327,13 @@ options = ClaudeAgentOptions(
 
 ```python
 async def run_code_in_sandbox(code_file: str, env_vars: Optional[dict] = None) -> dict:
-    """在 E2B Sandbox 中运行 code/*.py 脚本（自动清理）"""
+    """在 E2B Sandbox 中运行 codes/*.py 脚本（自动清理）"""
 
     # 1. 读取 Template ID
     template_id = _read_template_id()
 
     # 2. 读取代码文件
-    code_content = Path(f"code/{code_file}").read_text()
+    code_content = Path(f"codes/{code_file}").read_text()
 
     # 3. 创建 Sandbox 并执行
     async with SandboxManager(template_id, env_vars) as manager:
@@ -371,7 +371,7 @@ async def run_code_with_service(code_file: str, service_port: int, ...) -> dict:
 ```python
 async def main():
     """运行计算器应用生成器"""
-    # 调用 agent_runner 执行 code/calculator.py
+    # 调用 agent_runner 执行 codes/calculator.py
     result = await run_code_with_service(
         code_file="calculator.py",
         service_port=3000
@@ -494,7 +494,7 @@ sequenceDiagram
 flowchart TD
     A[用户运行 apps/calculator.py] --> B[agent_runner.py 启动]
     B --> C[创建 E2B Sandbox]
-    C --> D[上传 code/calculator.py]
+    C --> D[上传 codes/calculator.py]
     D --> E[配置 MCP 服务器]
     E --> F[执行 Agent 脚本]
     

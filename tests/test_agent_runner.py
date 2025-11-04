@@ -42,7 +42,7 @@ print("Hello from test script!")
 print("Test completed successfully")
 '''
 
-    test_file = Path(__file__).parent.parent / "src" / "code" / "test_simple.py"
+    test_file = Path(__file__).parent.parent / "examples" / "codes" / "test_simple.py"
     test_file.write_text(test_code, encoding="utf-8")
     print(f"✅ 创建测试文件: {test_file.name}")
 

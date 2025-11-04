@@ -87,11 +87,11 @@ async def run_code_in_sandbox(
     print(f"✅ Template ID: {template_id}")
 
     # 2. 读取代码文件
-    code_path = Path(__file__).parent / "code" / code_file
+    code_path = Path(__file__).parent.parent / "examples" / "codes" / code_file
     if not code_path.exists():
         raise FileNotFoundError(
             f"代码文件不存在: {code_path}\n"
-            f"请确保 src/code/{code_file} 文件存在"
+            f"请确保 examples/codes/{code_file} 文件存在"
         )
 
     print(f"📄 读取代码文件: {code_file}")
@@ -202,11 +202,11 @@ async def run_code_with_service(
     print(f"✅ Template ID: {template_id}")
 
     # 2. 读取代码文件
-    code_path = Path(__file__).parent / "code" / code_file
+    code_path = Path(__file__).parent.parent / "examples" / "codes" / code_file
     if not code_path.exists():
         raise FileNotFoundError(
             f"代码文件不存在: {code_path}\n"
-            f"请确保 src/code/{code_file} 文件存在"
+            f"请确保 examples/codes/{code_file} 文件存在"
         )
 
     print(f"📄 读取代码文件: {code_file}")

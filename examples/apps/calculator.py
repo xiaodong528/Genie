@@ -1,10 +1,10 @@
 """计算器应用运行器
 
-该脚本调用 agent_runner 在 E2B Sandbox 中执行 code/calculator.py,
+该脚本调用 agent_runner 在 E2B Sandbox 中执行 codes/calculator.py,
 使用 Claude Agent SDK 生成一个简单的计算器应用。
 
 使用方法:
-    python src/apps/calculator.py
+    python examples/apps/calculator.py
 
 环境要求:
     - E2B_API_KEY: E2B API 密钥
@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 # 添加 src 目录到 Python 路径，以便导入 agent_runner
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 
 from agent_runner import run_code_with_service
 

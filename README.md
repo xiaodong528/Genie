@@ -83,7 +83,7 @@ Template ID: xxx...xxx
 
 ```bash
 # 运行计算器应用生成器
-python src/apps/calculator.py
+python examples/apps/calculator.py
 ```
 
 **功能：**
@@ -231,7 +231,7 @@ print(result['service_url'])  # https://xxx.e2b.dev
 在 Sandbox 内执行的 Python 脚本，使用 Claude Agent SDK：
 
 ```python
-# src/code/calculator.py
+# examples/codes/calculator.py
 from claude_agent_sdk import ClaudeSDKClient, ClaudeAgentOptions
 
 async def main():
@@ -269,7 +269,7 @@ append_prompt = """
 - MCP 工具调用说明
 
 **使用方式**:
-在 `src/code/*.py` 中作为 `system_prompt` 的 `append` 使用。
+在 `examples/codes/*.py` 中作为 `system_prompt` 的 `append` 使用。
 
 ## AIPEXBASE 后端集成
 
@@ -445,7 +445,7 @@ results = await asyncio.gather(*tasks)
 ### 自定义 Agent 配置
 
 ```python
-# src/code/custom_agent.py
+# examples/codes/custom_agent.py
 options = ClaudeAgentOptions(
     allowed_tools=["Bash", "Read", "Write", "Glob", "Grep"],
     permission_mode="bypassPermissions",

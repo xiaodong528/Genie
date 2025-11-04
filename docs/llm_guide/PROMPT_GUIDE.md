@@ -234,7 +234,7 @@ await client.delete('users', id);
 ### 基础用法
 
 ```python
-# src/code/my_app.py
+# examples/codes/my_app.py
 from claude_agent_sdk import ClaudeSDKClient, ClaudeAgentOptions
 from prompt import append_prompt  # 导入系统提示词
 

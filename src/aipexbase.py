@@ -890,7 +890,7 @@ def load_env_config() -> Dict[str, Any]:
         ValueError: 缺少必要的环境变量时抛出
     """
     # 尝试加载 .env 文件
-    env_file = Path(__file__).parent / '.env'
+    env_file = Path(__file__).parent.parent / '.env'
     if env_file.exists():
         load_dotenv(env_file)
         print(f"{Fore.CYAN}→ 已加载 .env 文件")
@@ -951,7 +951,9 @@ def get_mcp_base_url(base_url: str) -> str:
     base_url = base_url.rstrip('/')
     # 去掉 /baas-api 后缀
     if base_url.endswith('/baas-api'):
-        return base_url[:-9]
+        base_url = base_url[:-9]
+    # 清理可能的多余斜杠
+    base_url = base_url.rstrip('/')
     return base_url
 
 
@@ -1008,7 +1010,7 @@ def create_client_from_env(env_file: Optional[str] = None, auto_login: bool = Tr
     if env_file:
         env_path = Path(env_file)
     else:
-        env_path = Path(__file__).parent / '.env'
+        env_path = Path(__file__).parent.parent / '.env'
 
     if env_path.exists():
         load_dotenv(env_path)
@@ -1171,9 +1173,9 @@ def main():
         output_config = config.get('output', {})
         output_filename = output_config.get('mcp_config_file', 'mcp_config.json')
 
-        # 确保保存到脚本所在目录
-        script_dir = Path(__file__).parent
-        output_file = script_dir / output_filename
+        # 确保保存到项目根目录
+        project_root = Path(__file__).parent.parent
+        output_file = project_root / output_filename
 
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(result.mcp_config, f, indent=2, ensure_ascii=False)

@@ -1,0 +1,6 @@
+.env
+.template_id
+__pycache__/
+*.pyc
+.venv
+.claude

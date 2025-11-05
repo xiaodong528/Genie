@@ -18,7 +18,6 @@
 e2b_project/
 ├── src/
 │   ├── template.py              # E2B Template 定义
-│   ├── build_template.py        # Template 构建脚本
 │   ├── sandbox_manager.py       # Sandbox 生命周期管理
 │   ├── agent_runner.py          # Agent 运行器（核心）
 │   ├── aipexbase.py            # AIPEXBASE 项目管理工具
@@ -27,6 +26,8 @@ e2b_project/
 │   │   └── calculator.py        # 计算器应用生成器
 │   └── apps/                    # 应用运行器（在宿主机执行）
 │       └── calculator.py        # 计算器应用运行器
+├── scripts/                     # 工具脚本
+│   └── build_template.py        # Template 构建脚本
 ├── docs/                        # 详细文档
 │   └── architecture.md          # 架构设计
 ├── tests/                       # 测试文件
@@ -59,7 +60,7 @@ cp .env.example .env
 
 ```bash
 # 运行构建脚本
-python src/build_template.py
+python scripts/build_template.py
 ```
 
 **预期输出：**
@@ -158,7 +159,7 @@ asyncio.run(main())
 使用 Python API 定义 Sandbox 环境，替代传统 Dockerfile：
 
 ```python
-# src/template.py
+# src/templates/sandbox_claude_template.py
 from e2b import Template, wait_for_timeout
 
 template = (

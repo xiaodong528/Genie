@@ -12,7 +12,6 @@
 e2b_project/
 ├── src/
 │   ├── template.py              # E2B Template 定义
-│   ├── build_template.py        # Template 构建脚本
 │   ├── sandbox_manager.py       # Sandbox 生命周期管理
 │   ├── agent_runner.py          # Agent 运行器（核心）
 │   ├── codes/                    # AI Agent 脚本（在 Sandbox 内执行）
@@ -21,6 +20,8 @@ e2b_project/
 │   └── apps/                    # 应用运行器（在宿主机执行）
 │       ├── __init__.py
 │       └── calculator.py        # 计算器应用运行器
+├── scripts/                     # 工具脚本
+│   └── build_template.py        # Template 构建脚本
 ├── docs/                        # 项目文档
 ├── tests/                       # 测试文件
 ├── .env                         # 环境变量配置
@@ -33,7 +34,7 @@ e2b_project/
 ```mermaid
 graph TB
     subgraph "1. 开发环境 - Template 构建"
-        A[template.py<br/>Template定义] --> B[build_template.py<br/>构建脚本]
+        A[template.py<br/>Template定义] --> B[scripts/build_template.py<br/>构建脚本]
         B --> C[E2B Cloud API]
         C --> D[Template Registry]
         D --> E[.template_id<br/>保存 Template ID]
@@ -157,7 +158,7 @@ template = (
 
 **职责**: 将 Template 定义构建为可用的 Sandbox 模板
 
-**核心文件**: `build_template.py`
+**核心文件**: `scripts/build_template.py`
 
 ```python
 from e2b import Template, default_build_logger
@@ -180,7 +181,7 @@ print(f"Template ID: {result.template_id}")
 ```mermaid
 sequenceDiagram
     participant Dev as 开发者
-    participant Script as build_template.py
+    participant Script as scripts/build_template.py
     participant E2B as E2B Cloud API
     participant Registry as Template Registry
 

@@ -5,7 +5,7 @@ E2B Template 构建脚本
 构建完成后会生成 Template ID，用于创建 Sandbox。
 
 使用方法:
-    python build_template.py
+    python scripts/build_template.py
 
 环境变量:
     E2B_API_KEY - E2B API 密钥（必需）
@@ -13,6 +13,12 @@ E2B Template 构建脚本
 
 import os
 import sys
+from pathlib import Path
+
+# 添加项目根目录到 Python 路径
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 from dotenv import load_dotenv
 from e2b import Template, default_build_logger
 
@@ -20,7 +26,7 @@ from e2b import Template, default_build_logger
 load_dotenv()
 
 # 导入 Template 定义
-from template import template
+from src.templates.sandbox_claude_template import template
 
 
 def validate_environment():
@@ -47,10 +53,10 @@ TEMPLATE_ALIAS={alias}
 """
 
     # 保存到 .template_id 文件
-    with open("../.template_id", "w") as f:
+    with open(".template_id", "w") as f:
         f.write(template_info)
 
-    print(f"\n✅ Template ID 已保存到 ../.template_id 文件")
+    print(f"\n✅ Template ID 已保存到 .template_id 文件")
 
 
 def build_template():

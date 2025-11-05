@@ -10,7 +10,7 @@ claude-agent-sdk>=0.1.5
 python-dotenv>=1.2.0
 
 # HTTP 请求库
-requests==2.31.0
+requests>=2.32.3
 
 # 彩色终端输出
 colorama==0.4.6

@@ -10,7 +10,7 @@ AgentBox 是一个 E2B Sandbox + Claude Agent SDK 集成项目,实现在隔离�
 
 - **宿主机代码** (`examples/apps/`, `src/agent_runner.py`, `src/sandbox_manager.py`): 管理 Sandbox 生命周期
 - **Sandbox 代码** (`examples/codes/`): 在隔离环境中执行的 AI Agent 脚本
-- **Template 定义** (`src/template.py`): 使用 Python API 定义 Sandbox 环境,替代 Dockerfile
+- **Template 定义** (`src/templates/sandbox_claude_template.py`): 使用 Python API 定义 Sandbox 环境,替代 Dockerfile
 - **AIPEXBASE 模块** (`src/aipexbase.py`): AIPEXBASE MCP 服务器管理工具
 
 ## 开发环境设置
@@ -46,7 +46,7 @@ AIPEXBASE 是低代码后端平台,为 AI Agent 提供:
 
 ```bash
 # 首次使用或修改 template.py 后执行
-python src/build_template.py
+python scripts/build_template.py
 
 # 成功后会生成 .template_id 文件,包含 Template ID
 ```
@@ -132,7 +132,7 @@ print(result['service_url'])  # https://xxx.e2b.dev
 
 ### Template vs Sandbox
 
-- **Template** (`src/template.py`):
+- **Template** (`src/templates/sandbox_claude_template.py`):
 
   - 环境定义 (类似 Docker 镜像)
   - 使用 Python API 定义,支持动态配置
@@ -218,8 +218,8 @@ await run_code_in_sandbox(
 
 ### 修改 Sandbox 环境
 
-1. 编辑 `src/template.py`
-2. 运行 `python src/build_template.py`
+1. 编辑 `src/templates/sandbox_claude_template.py`
+2. 运行 `python scripts/build_template.py`
 3. 新的 Template ID 自动保存到 `.template_id`
 
 ### 配置 MCP 服务器
@@ -485,7 +485,7 @@ if __name__ == "__main__":
 
 ```bash
 # 如果这是首次运行或修改了 template.py
-python src/build_template.py
+python scripts/build_template.py
 
 # 成功后会生成 .template_id 文件
 ```

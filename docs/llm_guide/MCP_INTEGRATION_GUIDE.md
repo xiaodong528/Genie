@@ -221,9 +221,9 @@ AIPEXBASE_MCP_URL=http://your-server:8080/mcp/sse?token=your_token
 
 ### 方式 2: Template 配置
 
-在 `template.py` 中将 MCP 配置作为启动命令。
+在 `sandbox_claude_template.py` 中将 MCP 配置作为启动命令。
 
-**配置位置**: `src/template.py`
+**配置位置**: `src/templates/sandbox_claude_template.py`
 
 ```python
 template = (
@@ -545,7 +545,7 @@ mcp_url = os.getenv("AIPEXBASE_MCP_URL")
 AIPEXBASE_MCP_URL=http://server/mcp/sse?token=new_token
 
 # 3. 重新构建 Template (如使用方式 2)
-python src/build_template.py
+python scripts/build_template.py
 
 # 4. 或重新启动应用 (如使用方式 1)
 ```

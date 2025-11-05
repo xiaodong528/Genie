@@ -27,7 +27,7 @@ e2b_project/
 │   └── apps/                    # 应用运行器（在宿主机执行）
 │       └── calculator.py        # 计算器应用运行器
 ├── scripts/                     # 工具脚本
-│   └── build_template.py        # Template 构建脚本
+│   └── build_sandbox_claude_template.py  # Template 构建脚本
 ├── docs/                        # 详细文档
 │   └── architecture.md          # 架构设计
 ├── tests/                       # 测试文件
@@ -60,7 +60,7 @@ cp .env.example .env
 
 ```bash
 # 运行构建脚本
-python scripts/build_template.py
+python scripts/build_sandbox_claude_template.py
 ```
 
 **预期输出：**

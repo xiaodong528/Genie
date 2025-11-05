@@ -21,7 +21,7 @@ e2b_project/
 │       ├── __init__.py
 │       └── calculator.py        # 计算器应用运行器
 ├── scripts/                     # 工具脚本
-│   └── build_template.py        # Template 构建脚本
+│   └── build_sandbox_claude_template.py  # Template 构建脚本
 ├── docs/                        # 项目文档
 ├── tests/                       # 测试文件
 ├── .env                         # 环境变量配置
@@ -34,7 +34,7 @@ e2b_project/
 ```mermaid
 graph TB
     subgraph "1. 开发环境 - Template 构建"
-        A[template.py<br/>Template定义] --> B[scripts/build_template.py<br/>构建脚本]
+        A[template.py<br/>Template定义] --> B[scripts/build_sandbox_claude_template.py<br/>构建脚本]
         B --> C[E2B Cloud API]
         C --> D[Template Registry]
         D --> E[.template_id<br/>保存 Template ID]
@@ -158,7 +158,7 @@ template = (
 
 **职责**: 将 Template 定义构建为可用的 Sandbox 模板
 
-**核心文件**: `scripts/build_template.py`
+**核心文件**: `scripts/build_sandbox_claude_template.py`
 
 ```python
 from e2b import Template, default_build_logger
@@ -181,7 +181,7 @@ print(f"Template ID: {result.template_id}")
 ```mermaid
 sequenceDiagram
     participant Dev as 开发者
-    participant Script as scripts/build_template.py
+    participant Script as scripts/build_sandbox_claude_template.py
     participant E2B as E2B Cloud API
     participant Registry as Template Registry
 

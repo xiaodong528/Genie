@@ -545,7 +545,7 @@ mcp_url = os.getenv("AIPEXBASE_MCP_URL")
 AIPEXBASE_MCP_URL=http://server/mcp/sse?token=new_token
 
 # 3. 重新构建 Template (如使用方式 2)
-python scripts/build_template.py
+python scripts/build_sandbox_claude_template.py
 
 # 4. 或重新启动应用 (如使用方式 1)
 ```

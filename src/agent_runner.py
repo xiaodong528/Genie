@@ -31,7 +31,7 @@ def _read_template_id() -> str:
     if not template_id_file.exists():
         raise FileNotFoundError(
             f"Template ID 文件不存在: {template_id_file}\n"
-            "请先运行 build_template.py 构建 Template"
+            "请先运行 build_sandbox_claude_template.py 构建 Template"
         )
 
     with open(template_id_file) as f:

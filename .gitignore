@@ -3,12 +3,8 @@
 __pycache__/
 *.pyc
 .venv
-.claude
 .settings/
 .serena
 .mcp.json
 .pytest_cache/
-
-# Examples directory cache
-examples/apps/__pycache__/
-examples/codes/__pycache__/
+ai_projects/

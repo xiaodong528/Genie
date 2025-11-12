@@ -242,22 +242,22 @@ async def run_code_with_service(
         print("✅ 代码文件已上传")
 
         # 5.5. 在 Sandbox 中添加 MCP 服务器配置
-        print("\n🔧 配置 MCP 服务器...")
-        mcp_cmd = (
-            'claude mcp add --transport sse --scope user aipexbase-mcp-server "http://59.110.83.233:8081/mcp/sse?token=kf_api_HJV77VzFckW3CTaXo8JYZdy4jWBQ4ZNI"; claude mcp list'
-        )
+        # print("\n🔧 配置 MCP 服务器...")
+        # mcp_cmd = (
+        #     'claude mcp add --transport sse --scope user aipexbase-mcp-server "http://59.110.83.233:8081/mcp/sse?token=kf_api_HJV77VzFckW3CTaXo8JYZdy4jWBQ4ZNI"; claude mcp list'
+        # )
 
-        mcp_result = await manager.sandbox.commands.run(
-            cmd=mcp_cmd,
-            on_stdout=lambda msg: print(f"[MCP] {msg}"),
-            on_stderr=lambda msg: print(f"[MCP Error] {msg}"),
-            timeout=30
-        )
+        # mcp_result = await manager.sandbox.commands.run(
+        #     cmd=mcp_cmd,
+        #     on_stdout=lambda msg: print(f"[MCP] {msg}"),
+        #     on_stderr=lambda msg: print(f"[MCP Error] {msg}"),
+        #     timeout=30
+        # )
 
-        if mcp_result.exit_code == 0:
-            print("✅ MCP 服务器配置成功")
-        else:
-            print(f"⚠️  MCP 配置失败 (退出码: {mcp_result.exit_code})")
+        # if mcp_result.exit_code == 0:
+        #     print("✅ MCP 服务器配置成功")
+        # else:
+        #     print(f"⚠️  MCP 配置失败 (退出码: {mcp_result.exit_code})")
 
         # 6. 执行代码
         print(f"\n🚀 执行代码: python {target_path}\n")
